@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Feedback Forum - Anonymous Fraud Reports</title>
+  <link rel="stylesheet" href="feedback.css" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /*  Navbar Styling */
+    .navbar {
+      background-color: #333;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .navbar .logo {
+      color: white;
+      font-size: 22px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .navbar .nav-links {
+      list-style-type: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    .navbar .nav-links li {
+      display: inline;
+    }
+
+    .navbar .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .navbar .nav-links .active {
+      color: #00c8ff;
+      font-weight: bold;
+      text-decoration: underline;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 30px auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+    }
+
+    h1, h2 {
+      text-align: center;
+      color: #333;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    textarea {
+      padding: 10px;
+      font-size: 16px;
+      resize: vertical;
+    }
+
+    button {
+      background-color: #007BFF;
+      color: white;
+      padding: 10px;
+      font-size: 16px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .entry {
+      background-color: #eee;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-left: 4px solid #007BFF;
+    }
+  </style>
+</head>
+<body>
+
+  <!--  START: NAVIGATION BAR  -->
+  <nav class="navbar">
+    <a href="index.html" class="logo">🎓 CampusCare</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="login.html">Login</a></li>
+      <li><a href="profile.html">Profile</a></li>
+      <li><a href="placement-tracker.html">Placement Tracker</a></li>
+      <li><a href="feedback.html">Feedback Forum</a></li>
+      <li><a href="college-data.html">College Stats</a></li>
+      <li><a href="resource-hub.html">Resource Hub</a></li>
+    </ul>
+  </nav>
+  <!--  END: NAVIGATION BAR  -->
+
+  <div class="container">
+    <h1>📝 Anonymous Feedback Forum</h1>
+    <p>Have you experienced fake placement promises or college fraud? Share anonymously below.</p>
+
+    <form id="feedbackForm">
+      <label for="report">Your Experience (No personal details)</label>
+      <textarea id="report" rows="5" required placeholder="Write your experience here..."></textarea>
+      <button type="submit">Submit Feedback</button>
+    </form>
+
+    <hr />
+
+    <h2> Submitted Reports</h2>
+    <div id="feedbackList"></div>
+  </div>
+
+  <script>
+    const form = document.getElementById("feedbackForm");
+    const list = document.getElementById("feedbackList");
+
+    // Load stored feedback on page load
+    window.onload = () => {
+      const saved = JSON.parse(localStorage.getItem("fraudReports")) || [];
+      saved.forEach(report => addToList(report));
+    };
+
+    // Handle form submit
+    form.addEventListener("submit", function(e) {
+      e.preventDefault();
+      const report = document.getElementById("report").value.trim();
+      if (report) {
+        const saved = JSON.parse(localStorage.getItem("fraudReports")) || [];
+        saved.push(report);
+        localStorage.setItem("fraudReports", JSON.stringify(saved));
+        addToList(report);
+        form.reset();
+      }
+    });
+
+    function addToList(text) {
+      const div = document.createElement("div");
+      div.className = "entry";
+      div.innerText = text;
+      list.prepend(div); // latest on top
+    }
+  </script>
+</body>
+</html>

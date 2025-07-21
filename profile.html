@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Student Profile</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* Navbar Styling */
+    .navbar {
+      background-color: #333;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .navbar .logo {
+      color: white;
+      font-size: 22px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .navbar .nav-links {
+      list-style-type: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    .navbar .nav-links li {
+      display: inline;
+    }
+
+    .navbar .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .navbar .nav-links .active {
+      color: #00c8ff;
+      font-weight: bold;
+      text-decoration: underline;
+    }
+
+    /* Body and Profile Styles */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background: #f2f2f2;
+    }
+
+    .profile-container {
+      max-width: 600px;
+      margin: 30px auto;
+      padding: 20px;
+      background-color: #f9f9f9;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .profile-container h2 {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .profile-line {
+      margin-bottom: 15px;
+      font-size: 1.1em;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 5px;
+    }
+
+    .logout {
+      text-align: right;
+      margin: 10px 30px 0;
+    }
+
+    .logout a {
+      color: red;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .logout a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <!--  START: NAVIGATION BAR -->
+  <nav class="navbar">
+    <a href="index.html" class="logo">🎓 CampusCare</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="login.html">Login</a></li>
+      <li><a href="profile.html">Profile</a></li>
+      <li><a href="placement-tracker.html">Placement Tracker</a></li>
+      <li><a href="feedback.html">Feedback Forum</a></li>
+      <li><a href="college-data.html">College Stats</a></li>
+      <li><a href="resource-hub.html">Resource Hub</a></li>
+    </ul>
+  </nav>
+  <!--  END: NAVIGATION BAR -->
+
+  <!--  Profile Details Section -->
+  <div class="profile-container">
+    <h2>Student Profile</h2>
+    <div class="profile-line" id="nameLine">👤 Name: </div>
+    <div class="profile-line" id="collegeLine">🏫 College: </div>
+    <div class="profile-line" id="courseLine">📚 Course: </div>
+    <div class="profile-line" id="yearLine">📅 Year: </div>
+    <div class="profile-line" id="emailLine">✉️ Email: </div>
+  </div>
+
+  <div class="logout">
+    <a href="index.html" onclick="logout()">Logout</a>
+  </div>
+
+  <script>
+    // Load profile data from localStorage
+    document.getElementById("nameLine").innerHTML += localStorage.getItem("signupName") || "Not Available";
+    document.getElementById("collegeLine").innerHTML += localStorage.getItem("signupCollege") || "Not Available";
+    document.getElementById("courseLine").innerHTML += localStorage.getItem("signupCourse") || "Not Available";
+    document.getElementById("yearLine").innerHTML += localStorage.getItem("signupYear") || "Not Available";
+    document.getElementById("emailLine").innerHTML += localStorage.getItem("signupEmail") || "Not Available";
+
+    function logout() {
+      localStorage.setItem("isLoggedIn", "false");
+      alert("You have been logged out!");
+    }
+  </script>
+
+</body>
+</html>

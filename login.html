@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Login | CampusCare</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="login.css" />
+</head>
+<body>
+
+  <!-- START: NAVIGATION BAR -->
+  <header>
+    <nav class="navbar">
+      <a href="index.html" class="logo">🎓 CampusCare</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="login.html" class="active">Login</a></li>
+        <li><a href="profile.html">Profile</a></li>
+        <li><a href="placement-tracker.html">Placement Tracker</a></li>
+        <li><a href="feedback.html">Feedback Forum</a></li>
+        <li><a href="college-data.html">College Stats</a></li>
+        <li><a href="resource-hub.html">Resource Hub</a></li>
+      </ul>
+    </nav>
+  </header>
+  <!-- END: NAVIGATION BAR -->
+
+  <!-- START: LOGIN FORM -->
+  <main class="login-container">
+    <h2>Student Login</h2>
+    <form id="loginForm">
+      <input type="email" id="loginEmail" placeholder="Enter your email" required />
+      <input type="password" id="loginPassword" placeholder="Enter your password" required />
+      <button type="submit">Login</button>
+    </form>
+
+    <div class="link">
+      Don’t have an account? <a href="index.html">Sign up</a>
+    </div>
+  </main>
+  <!-- END: LOGIN FORM -->
+
+  <script>
+    const form = document.getElementById("loginForm");
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const enteredEmail = document.getElementById("loginEmail").value;
+      const enteredPassword = document.getElementById("loginPassword").value;
+
+      const savedEmail = localStorage.getItem("signupEmail");
+      const savedPassword = localStorage.getItem("signupPassword");
+
+      if (enteredEmail === savedEmail && enteredPassword === savedPassword) {
+        alert("Login successful!");
+        localStorage.setItem("isLoggedIn", "true");
+        window.location.href = "profile.html";
+      } else {
+        alert("Invalid email or password. Please try again.");
+      }
+    });
+  </script>
+</body>
+</html>

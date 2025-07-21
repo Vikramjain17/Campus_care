@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>College Placement Stats</title>
+  <link rel="stylesheet" href="college-data.css">
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* Navbar Styling */
+    .navbar {
+      background-color: #333;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .navbar .logo {
+      color: white;
+      font-size: 22px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .navbar .nav-links {
+      list-style-type: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    .navbar .nav-links li {
+      display: inline;
+    }
+
+    .navbar .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .navbar .nav-links .active {
+      color: #00c8ff;
+      font-weight: bold;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <!--  START: NAVIGATION BAR  -->
+  <nav class="navbar">
+    <a href="index.html" class="logo">🎓 CampusCare</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="login.html">Login</a></li>
+      <li><a href="profile.html">Profile</a></li>
+      <li><a href="placement-tracker.html">Placement Tracker</a></li>
+      <li><a href="feedback.html">Feedback Forum</a></li>
+      <li><a href="college-data.html" class="active">College Stats</a></li>
+      <li><a href="resource-hub.html">Resource Hub</a></li>
+    </ul>
+  </nav>
+  <!--  END: NAVIGATION BAR  -->
+
+  <div class="container">
+    <h1>📊 College Placement Statistics</h1>
+
+    <input type="text" id="searchBar" placeholder="Search college by name..." onkeyup="searchCollege()">
+
+    <div id="collegeList" class="college-list">
+      <!-- Sample College Data -->
+      <div class="college-card">
+        <p><strong>College Name:</strong> ABC Institute of Technology</p>
+        <p><strong>Real Placement Rate:</strong> 18%</p>
+        <p><strong>Claimed Placement Rate:</strong> 90%</p>
+        <p><strong>Top Recruiters (Real):</strong> Local startups, small IT firms</p>
+        <p><strong>Student Notes:</strong> "We were promised 3 offers but only 1 company came."</p>
+      </div>
+
+      <div class="college-card">
+        <p><strong>College Name:</strong> XYZ Engineering College</p>
+        <p><strong>Real Placement Rate:</strong> 35%</p>
+        <p><strong>Claimed Placement Rate:</strong> 100%</p>
+        <p><strong>
