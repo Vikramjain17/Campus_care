@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Resource Hub - Training Videos</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="resource-hub.css" />
+</head>
+<body>
+
+  <!-- START: NAVIGATION BAR -->
+  <nav class="navbar">
+    <a href="index.html" class="logo">🎓 CampusCare</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="login.html">Login</a></li>
+      <li><a href="profile.html">Profile</a></li>
+      <li><a href="placement-tracker.html">Placement Tracker</a></li>
+      <li><a href="feedback.html">Feedback</a></li>
+      <li><a href="college-data.html">College Data</a></li>
+      <li><a href="resource-hub.html" class="active">Resource Hub</a></li>
+    </ul>
+  </nav>
+  <!-- END: NAVBAR -->
+
+  <div class="container">
+    <h1>🎥 Resource Hub</h1>
+    <p>Explore free training videos to improve your placement readiness!</p>
+
+    <div class="filters">
+      <button onclick="filterVideos('all')">All</button>
+      <button onclick="filterVideos('soft')">Soft Skills</button>
+      <button onclick="filterVideos('resume')">Resume</button>
+      <button onclick="filterVideos('interview')">Interview Prep</button>
+      <button onclick="filterVideos('aptitude')">Aptitude</button>
+    </div>
+
+    <div id="videoList" class="video-list">
+      <!-- Sample Videos -->
+      <div class="video-card" data-category="soft">
+        <iframe src="https://www.youtube.com/embed/NmIqP8dDr8g" allowfullscreen></iframe>
+        <p><strong>Mastering Communication Skills</strong></p>
+      </div>
+
+      <div class="video-card" data-category="resume">
+        <iframe src="https://www.youtube.com/embed/v4R3W0gTQ2I" allowfullscreen></iframe>
+        <p><strong>How to Write a Resume for Freshers</strong></p>
+      </div>
+
+      <div class="video-card" data-category="interview">
+        <iframe src="https://www.youtube.com/embed/Mg5M3G7kJfE" allowfullscreen></iframe>
+        <p><strong>Top HR Interview Questions</strong></p>
+      </div>
+
+      <div class="video-card" data-category="aptitude">
+        <iframe src="https://www.youtube.com/embed/Z_KspIX1oXg" allowfullscreen></iframe>
+        <p><strong>Aptitude Basics for Campus Placement</strong></p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function filterVideos(category) {
+      const cards = document.querySelectorAll(".video-card");
+      cards.forEach(card => {
+        card.style.display = (category === "all" || card.dataset.category === category) ? "block" : "none";
+      });
+    }
+  </script>
+</body>
+</html>
