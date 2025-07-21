@@ -33,8 +33,5 @@ CampusCare/
 ├── login.css # Optional login-specific styling
 └── README.md
 
-Author
-Vikram Jain
-https://github.com/Vikramjain17/Campus_care
 
 
